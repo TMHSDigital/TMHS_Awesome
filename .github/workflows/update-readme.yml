@@ -19,15 +19,54 @@ jobs:
       - name: Generate README content
         id: readme
         run: |
-          curl https://api.github.com/users/TMHSDigital/repos?per_page=100 | jq -r '.[] | "- [\(.name)](\(.html_url)): \(.description)"' > repo_list.txt
-
-      - name: Update README.md
-        run: |
-          sed -i '/<!-- AUTO-GENERATED REPO LIST START -->/,/<!-- AUTO-GENERATED REPO LIST END -->/c\
-          <!-- AUTO-GENERATED REPO LIST START -->\n\
-          '"$(cat repo_list.txt)"'\n\
-          <!-- AUTO-GENERATED REPO LIST END -->' README.md
+          # Define categories
+          categories=("Web Development" "Data Science & Machine Learning" "DevOps & Automation" "Educational Resources" "UI/UX Design" "Games & Interactive" "Miscellaneous")
           
+          # Initialize associative arrays to store categorized repositories
+          declare -A categorized_repos
+          for category in "${categories[@]}"; do
+            categorized_repos["$category"]=""
+          done
+
+          # Fetch repositories from GitHub API
+          repos=$(curl -s https://api.github.com/users/TMHSDigital/repos?per_page=100)
+
+          # Categorize repositories
+          for repo in $(echo "${repos}" | jq -r '.[] | @base64'); do
+            _jq() {
+              echo "${repo}" | base64 --decode | jq -r "${1}"
+            }
+
+            repo_name=$(_jq '.name')
+            repo_url=$(_jq '.html_url')
+            repo_desc=$(_jq '.description')
+
+            # Categorize based on repository name or description
+            if [[ "$repo_name" =~ (webui|landing|TechWave|button|GitHub|Digital|site) ]]; then
+              categorized_repos["Web Development"]+="- [${repo_name}](${repo_url}): ${repo_desc}\n"
+            elif [[ "$repo_name" =~ (llama|defense|Language|report|science) ]]; then
+              categorized_repos["Data Science & Machine Learning"]+="- [${repo_name}](${repo_url}): ${repo_desc}\n"
+            elif [[ "$repo_name" =~ (Tech|Digital|asset|magicui) ]]; then
+              categorized_repos["DevOps & Automation"]+="- [${repo_name}](${repo_url}): ${repo_desc}\n"
+            elif [[ "$repo_name" =~ (Education|README|SQL|build) ]]; then
+              categorized_repos["Educational Resources"]+="- [${repo_name}](${repo_url}): ${repo_desc}\n"
+            elif [[ "$repo_name" =~ (figma|Galileo|theme|ui) ]]; then
+              categorized_repos["UI/UX Design"]+="- [${repo_name}](${repo_url}): ${repo_desc}\n"
+            elif [[ "$repo_name" =~ (game|rpg|playground) ]]; then
+              categorized_repos["Games & Interactive"]+="- [${repo_name}](${repo_url}): ${repo_desc}\n"
+            else
+              categorized_repos["Miscellaneous"]+="- [${repo_name}](${repo_url}): ${repo_desc}\n"
+            fi
+          done
+
+          # Update README.md with categorized repositories
+          for category in "${categories[@]}"; do
+            sed -i "/<!-- AUTO-GENERATED REPO LIST START - ${category} -->/,/<!-- AUTO-GENERATED REPO LIST END - ${category} -->/c\
+<!-- AUTO-GENERATED REPO LIST START - ${category} -->\n\
+${categorized_repos[$category]}\n\
+<!-- AUTO-GENERATED REPO LIST END - ${category} -->" README.md
+          done
+
       - name: Commit changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
