@@ -31,12 +31,6 @@
 
 Welcome to the TM Hospitality Strategies (TMHSDigital) central repository! Here you will find a comprehensive list of all our projects, categorized by their purpose and technology stack. Our aim is to provide innovative solutions for sustainable growth in the hospitality industry.
 
-## Current Public Repositories
-
-<!-- AUTO-GENERATED REPO LIST START -->
-
-<!-- AUTO-GENERATED REPO LIST END -->
-
 ---
 
 <h3 align="center">Table of Contents</h3>
