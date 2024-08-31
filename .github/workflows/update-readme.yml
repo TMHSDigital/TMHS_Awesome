@@ -11,6 +11,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3  # Updated to the latest version
+      
+      - name: Install jq
+        run: sudo apt-get install jq
 
       - name: Generate README content
         id: readme
