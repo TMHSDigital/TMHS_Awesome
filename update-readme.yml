@@ -1,0 +1,33 @@
+name: Update README
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs once a day at midnight UTC
+  workflow_dispatch:  # Allows you to manually trigger the workflow
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate README content
+        id: readme
+        run: |
+          curl https://api.github.com/users/TMHSDigital/repos?per_page=100 | jq -r '.[] | "- [\(.name)](\(.html_url)): \(.description)"' > repo_list.txt
+
+      - name: Update README.md
+        run: |
+          sed -i '/<!-- AUTO-GENERATED REPO LIST START -->/,/<!-- AUTO-GENERATED REPO LIST END -->/c\
+          <!-- AUTO-GENERATED REPO LIST START -->\n\
+          '"$(cat repo_list.txt)"'\n\
+          <!-- AUTO-GENERATED REPO LIST END -->' README.md
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Actions"
+          git add README.md
+          git commit -m "Update README.md with latest repositories"
+          git push
