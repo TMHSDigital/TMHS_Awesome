@@ -1,5 +1,7 @@
 <h1 align="center">TM Hospitality Strategies Projects</h1>
 
+# TM Hospitality Strategies Projects
+
 <p align="center">
   <a href="https://www.instagram.com/tmhs.ig/" target="_blank">
     <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
@@ -14,6 +16,16 @@
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
 </p>
+
+---
+
+## Workflow Status
+
+![Update README Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/update-readme.yml/badge.svg?label=Update%20README)
+![Lint Code Base Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/lint.yml/badge.svg?label=Lint%20Code%20Base)
+![CodeQL Analysis Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/codeql-analysis.yml/badge.svg?label=CodeQL%20Analysis)
+![Dependabot Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/dependabot.yml/badge.svg?label=Dependabot)
+![Close Stale Issues Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/close-stale-issues.yml/badge.svg?label=Close%20Stale%20Issues)
 
 ---
 
