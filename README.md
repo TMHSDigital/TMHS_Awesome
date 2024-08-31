@@ -17,7 +17,7 @@
 
 ---
 
-## Workflow Status
+<h2 align="center">Workflow Status</h2>
 
 ![Update README Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/update-readme.yml/badge.svg?label=Update%20README)
 ![Lint Code Base Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/lint.yml/badge.svg?label=Lint%20Code%20Base)
@@ -27,7 +27,7 @@
 
 ---
 
-## Introduction
+<h2 align="center">Introduction</h2>
 
 Welcome to the TM Hospitality Strategies (TMHSDigital) central repository! Here you will find a comprehensive list of all our projects, categorized by their purpose and technology stack. Our aim is to provide innovative solutions for sustainable growth in the hospitality industry.
 
@@ -37,7 +37,9 @@ Welcome to the TM Hospitality Strategies (TMHSDigital) central repository! Here 
 
 <!-- AUTO-GENERATED REPO LIST END -->
 
-## Table of Contents
+---
+
+<h3 align="center">Table of Contents</h3>
 
 - [Web Development](#web-development)
 - [Data Science & Machine Learning](#data-science--machine-learning)
