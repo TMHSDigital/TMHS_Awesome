@@ -4,10 +4,9 @@ on:
   push:
     branches: [main]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [main]
   schedule:
-    - cron: '0 2 * * 1'
+    - cron: '0 2 * * 1'  # Runs weekly on Monday at 2 AM UTC
 
 jobs:
   analyze:
@@ -22,8 +21,6 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'javascript', 'python', 'java' ]
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'kotlin', 'python', 'ruby', 'typescript' ]
-        # Learn more: https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
 
     steps:
     - name: Checkout repository
