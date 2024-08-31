@@ -19,10 +19,23 @@
 
 <h2 align="center">Workflow Status</h2>
 
+
 ![Update README Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/update-readme.yml/badge.svg?label=Update%20README)
+
+---
+
 ![Lint Code Base Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/lint.yml/badge.svg?label=Lint%20Code%20Base)
+
+---
+
 ![CodeQL Analysis Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/codeql-analysis.yml/badge.svg?label=CodeQL%20Analysis)
+
+---
+
 ![Dependabot Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/dependabot.yml/badge.svg?label=Dependabot)
+
+---
+
 ![Close Stale Issues Status](https://github.com/TMHSDigital/TMHS_Awesome/actions/workflows/close-stale-issues.yml/badge.svg?label=Close%20Stale%20Issues)
 
 ---
